@@ -2,7 +2,7 @@
 
 ## Integrating Biological Irreversibility Filtering with Bidirectional GRUs
 
-**Kirti Kumari, Abhay Chaudhary, Mansi Butola, Khushi Krishali**  
+**Kirti Kumari,Mansi Butola, Khushi Krishali ,Abhay Chaudhary,**  
 Department of Computer Science and Engineering  
 Graphic Era Hill University, Dehradun, India
 
@@ -33,10 +33,10 @@ This repository contains the complete implementation of a novel dual-phase frame
 
 ```
 📁 bigru-bif-alzheimers/
-├── 01_Data_Preprocessing_Pipeline.ipynb     ← ADNI data cleaning & merging
-├── 02_BIF_and_Phase1_CN_vs_AD.ipynb         ← BIF application + Phase 1 model
-├── 03_Phase2_MCI_Conversion_Prediction.ipynb ← Phase 2 model + ablation + SHAP
-├── 04_Site_Level_Holdout_Validation.ipynb   ← External site generalisation
+├── 1_Data_Preprocessing_Pipeline.ipynb     ← ADNI data cleaning & merging
+├── 2_BIF_and_Phase1_CN_vs_AD.ipynb         ← BIF application + Phase 1 model
+├── 3_Phase2_MCI_Conversion_Prediction.ipynb ← Phase 2 model + ablation + SHAP
+├── 4_Site_Level_Holdout_Validation.ipynb   ← External site generalisation
 └── README.md
 ```
 
@@ -45,7 +45,7 @@ This repository contains the complete implementation of a novel dual-phase frame
 ## Notebook Guide
 
 ### 01 — Data Preprocessing Pipeline
-**Source:** `Untitled45.ipynb`  
+**Source:** `1_Data_Preprocessing_Pipeline.ipynb`  
 Loads 5 raw ADNI data streams (DXSUM, MMSE, ADAS-Cog, demographics, APOE4), harmonises VISCODE labels, removes 697 duplicates, imputes missing ADAS scores using visit-type median, and computes patient age dynamically from birth year.
 
 **Output:** `FINAL_CLEAN_FULL_with_demo_apoe_age_fixed.csv` — 15,168 visits, 3,788 patients
@@ -53,7 +53,7 @@ Loads 5 raw ADNI data streams (DXSUM, MMSE, ADAS-Cog, demographics, APOE4), harm
 ---
 
 ### 02 — BIF + Phase 1 CN vs AD
-**Source:** `Copy_of_ADNI_DATA_MERGE_AND_CLEAN__3_.ipynb`  
+**Source:** `2_BIF_and_Phase1_CN_vs_AD.ipynb`  
 Applies BIF (corrects 527 reversals using `cummax()`), generates trajectory visualisation, and trains Bi-GRU for binary CN vs AD classification with SHAP explainability.
 
 **Key results:**
@@ -64,7 +64,7 @@ Applies BIF (corrects 527 reversals using `cummax()`), generates trajectory visu
 ---
 
 ### 03 — Phase 2 MCI Conversion Prediction
-**Source:** `Untitled52_fixed.ipynb`  
+**Source:** `3_Phase2_MCI_Conversion_Prediction.ipynb`  
 Complete Phase 2 pipeline: 24-month conversion label construction with zero data leakage, 5-fold patient-level GroupShuffleSplit cross-validation, class-weighted training, ablation study (EXP-A/B/C), and SHAP feature importance.
 
 **Key results:**
@@ -75,7 +75,7 @@ Complete Phase 2 pipeline: 24-month conversion label construction with zero data
 ---
 
 ### 04 — Site-Level External Holdout Validation
-**Source:** `Untitled53.ipynb`  
+**Source:** ` 4_Site_Level_Holdout_Validation.ipynb`  
 Trains on 74 ADNI sites, evaluates on fully withheld site 130 (98 patients never seen during training). Three-class (CN vs MCI vs AD) task.
 
 **Key results:**
